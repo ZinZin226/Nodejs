@@ -6,15 +6,24 @@ const server = http.createServer((req, res)=>{
     switch(req.url){
         case '/':
             filename= "home.html";
+            res.statusCode = 200;
             break;
         case '/about':
             filename= "about.html";
+            res.statusCode = 200;
             break;
         case '/contact':
             filename= "contact.html";
+            res.statusCode = 200;
+            break;
+        case '/contact-us':
+            res.statusCode = 301;
+            res.setHeader('Location', '/contact');
             break;
         default:
             filename= "404.html";
+            res.statusCode = 404;
+            break;
     }
     res.setHeader('Content-Type', 'text/html');
 
@@ -29,6 +38,6 @@ const server = http.createServer((req, res)=>{
     })
 })
 
-server.listen(5000, 'localhost', ()=>{
-    console.log('server is listening on port 5000');
+server.listen(3000, 'localhost', ()=>{
+    console.log('server is listening on port 3000');
 })
