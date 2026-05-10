@@ -1,8 +1,16 @@
 const express = require('express');
+let morgan = require('morgan');
+const mongoose = require('mongoose');
 
 const app = express();
 
-let morgan = require('morgan')
+//db url
+let mongoUrl = "mongodb+srv://zinzinwinhtet:student1234@cluster0.fawqubg.mongodb.net/?appName=Cluster0";
+mongoose.connect(mongoUrl).then(() => {
+    console.log('connected to db');
+}).catch(e => {
+    console.log(e);
+});
 
 app.set('views', './view');
 app.set('view engine', 'ejs');
